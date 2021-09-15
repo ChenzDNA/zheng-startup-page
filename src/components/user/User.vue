@@ -1,10 +1,14 @@
-<template></template>
+<template>
+  
+</template>
 
 <script>
 export default {
-  name: "Note",
-};
+  name:'User',
+  
+}
 </script>
 
 <style>
+
 </style>
