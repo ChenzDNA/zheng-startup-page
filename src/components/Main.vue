@@ -1,9 +1,6 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
-    <link
-      href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
+    
     <Cat></Cat>
     <Time :second="timeConf.second" class="background-void"></Time>
     <Weather class="background-void" :cityName="weatherConf.cityName"></Weather>
