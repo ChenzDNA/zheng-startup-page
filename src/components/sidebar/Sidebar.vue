@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      barRight: "-10px",
-      // barRight: "-300px",
+      // barRight: "-10px",
+      barRight: "-300px",
     };
   },
   methods: {
@@ -63,7 +63,7 @@ export default {
 
 #sidebar > * {
   margin-left: 10%;
-  margin-top: 10px;
+  margin-top: 20px;
   user-select: none;
 }
 
