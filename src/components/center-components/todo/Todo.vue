@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <div id="todo">diao</div>
+</template>
 
 <script>
 export default {
