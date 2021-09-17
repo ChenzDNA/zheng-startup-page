@@ -1,7 +1,7 @@
 <template>
   <div id="weather">
     <i class="fa fa-home fa-2x fa-fw"></i>
-    <p>{{ cityName }}</p>
+    <p>{{ realCityName }}</p>
     <br />
     <i class="fa fa-2x fa-fw" :class="weatherClass"></i>
     <p>{{ weather }}</p>
@@ -21,6 +21,9 @@
 
 export default {
   name: "Weather",
+  props: {
+    cityName: String,
+  },
   data() {
     return {
       tempHigh: "34℃",
@@ -28,7 +31,6 @@ export default {
       windDirection: "北风",
       windStrength: "<3级",
       weather: "晴",
-      cityName: "湘潭",
       infoText: "",
       weatherClass: "",
       weatherClasses: {
@@ -36,25 +38,41 @@ export default {
         雪: "fa-snowflake-o",
         雷: "fa-flash",
         雨: "fa-tint",
+        小雨: "fa-tint",
         晴: "fa-sun-o",
       },
     };
   },
+  methods: {
+    getWeatherInfo(cityName) {
+      // axios
+      //   .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
+      //   .then((res) => {
+      //     let data = res.data.data;
+      //     this.windStrength = data["forecast"][0]["fengli"]
+      //       .split("[")[2]
+      //       .split("]")[0];
+      //     this.windDirection = data["forecast"][0]["fengxiang"];
+      //     this.infoText = data["ganmao"];
+      //     this.weather = data["forecast"][0]["type"];
+      //     this.weatherClass = this.weatherClasses[this.weather];
+      //     this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
+      //     this.tempLow = data["forecast"][0]["low"].split(" ")[1];
+      //   })
+      //   .catch(() => {
+      //     console.log("jiba");
+      //   });
+      return cityName;
+    },
+  },
   mounted() {
-    // axios
-    //   .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.cityName}`)
-    //   .then((res) => {
-    //     let data = res.data.data;
-    //     this.windStrength = data["forecast"][0]["fengli"]
-    //       .split("[")[2]
-    //       .split("]")[0];
-    //     this.windDirection = data["forecast"][0]["fengxiang"];
-    //     this.infoText = data["ganmao"];
-    //     this.weather = data["forecast"][0]["type"];
-    //     this.weatherClass = this.weatherClasses[this.weather];
-    //     this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
-    //     this.tempLow = data["forecast"][0]["low"].split(" ")[1];
-    //   });
+    this.getWeatherInfo(this.cityName);
+  },
+  computed: {
+    realCityName() {
+      this.getWeatherInfo(this.cityName);
+      return this.cityName;
+    },
   },
 };
 </script>

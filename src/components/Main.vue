@@ -6,23 +6,24 @@
     />
     <Cat></Cat>
     <Time :second="timeConf.second" class="background-void"></Time>
-    <Weather class="background-void"></Weather>
+    <Weather class="background-void" :cityName="weatherConf.cityName"></Weather>
     <Search
       class="background-void"
       :searchEngine="searchConf.searchEngine"
       :searchEngines="searchConf.searchEngines"
     ></Search>
+    <ComponentsSwitch></ComponentsSwitch>
     <Sidebar
       :timeConf="timeConf"
       :searchConf="searchConf"
+      :weatherConf="weatherConf"
       class="background-void"
     ></Sidebar>
-    <ComponentsSwitch></ComponentsSwitch>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 import Sidebar from "./sidebar/Sidebar.vue";
 import ComponentsSwitch from "./center-components/ComponentsSwitch.vue";
@@ -41,9 +42,6 @@ export default {
     Search,
     ComponentsSwitch,
   },
-  metaInfo: {
-    title: "werwqerqwer",
-  },
   data() {
     return {
       timeConf: {
@@ -57,11 +55,14 @@ export default {
           baidu: "https://www.baidu.com/s?ie=UTF-8&wd=",
         },
       },
+      weatherConf: {
+        cityName: "湘潭",
+      },
       imageUrl: "https://api.dujin.org/bing/1920.php",
     };
   },
   mounted() {
-    axios.get("");
+    
   },
 };
 </script>

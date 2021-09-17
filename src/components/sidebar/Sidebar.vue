@@ -22,6 +22,11 @@
         ></option>
       </select>
     </div>
+    <div id="weather-cityname">
+      <label for="cityname">查询城市天气 </label>
+      <input type="text" name="cityname" id="cityname" v-model="cityName" />
+      <button @click="submitCityname">确定</button>
+    </div>
   </div>
 </template>
 
@@ -31,11 +36,13 @@ export default {
   props: {
     timeConf: Object,
     searchConf: Object,
+    weatherConf: Object,
   },
   data() {
     return {
-      // barRight: "-10px",
-      barRight: "-300px",
+      barRight: "-10px",
+      // barRight: "-300px",
+      cityName: "湘潭",
     };
   },
   methods: {
@@ -44,6 +51,9 @@ export default {
     },
     slideIn() {
       this.barRight = "-300px";
+    },
+    submitCityname() {
+      this.weatherConf.cityName = this.cityName;
     },
   },
 };
@@ -93,5 +103,12 @@ export default {
 #engine-select > select option {
   background: rgb(51, 48, 48);
   color: white;
+}
+input {
+  outline: none;
+}
+#weather-cityname > input {
+  width: 70px;
+  line-height: 18px;
 }
 </style>
