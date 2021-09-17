@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <input type="text" v-model="searchValue" @keydown.enter="doSearch" />
+    <input type="text" v-model="searchValue" @keydown.enter="doSearch" placeholder="🔍"/>
   </div>
 </template>
 
