@@ -36,7 +36,7 @@ export default {
   mounted() {
     setInterval(() => {
       let date = new Date();
-      this.splitMark = date.getSeconds() % 2 === 0 ? "" : ":";
+      this.splitMark = (date.getSeconds() & 1) === 0 ? "" : ":";
       this.time = [date.getHours(), date.getMinutes(), date.getSeconds()];
       this.time.map((val, index, arr) => {
         if (val / 10 < 1) {
