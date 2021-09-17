@@ -29,6 +29,10 @@ export default {
           route: "note",
           name: "便签",
         },
+        {
+          route: "todo",
+          name: "待办",
+        },
       ],
     };
   },
@@ -76,6 +80,17 @@ a {
   width: calc(100% - 70px);
 
   height: 70vh;
-  padding: 10px;
+  overflow-y: scroll;
+}
+#content::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+#content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 </style>
