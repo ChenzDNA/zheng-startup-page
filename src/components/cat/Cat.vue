@@ -1,6 +1,6 @@
 <template>
   <div id="cat">
-    <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html"></iframe>
+    <!-- <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html"></iframe> -->
   </div>
 </template>
 
@@ -12,10 +12,6 @@ export default {
 
 <style>
 #cat {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background-color: rgba(252, 158, 158, 0) !important;
-
   width: 100vw;
   height: 100vh;
 }
