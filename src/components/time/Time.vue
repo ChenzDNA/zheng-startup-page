@@ -1,5 +1,8 @@
 <template>
-  <div id="time-text" :style="{ color: fontColor, left: realLeft }">
+  <div
+    id="time-text"
+    :style="{ color: fontColor, left: realLeft, width: realWidth }"
+  >
     <div class="time-num">{{ time[0] }}</div>
     <div class="split-mark">{{ splitMark }}</div>
     <div class="time-num">{{ time[1] }}</div>
@@ -25,6 +28,9 @@ export default {
   computed: {
     realLeft() {
       return this.second ? "30px" : "95px";
+    },
+    realWidth() {
+      return this.second ? "175px" : "110px";
     },
   },
   mounted() {
@@ -54,7 +60,7 @@ export default {
   font-family: "led";
   position: absolute;
   top: 30px;
-
+  width: 175px;
   padding: 0px 15px;
 }
 #time-text > * {
@@ -65,6 +71,6 @@ export default {
   width: 45px;
 }
 .split-mark {
-  width: 20px;
+  width: 18px;
 }
 </style>

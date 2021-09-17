@@ -1,4 +1,8 @@
-<template></template>
+<template>
+  <div>
+    jiba
+  </div>
+</template>
 
 <script>
 export default {
