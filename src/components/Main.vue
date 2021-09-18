@@ -1,6 +1,6 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
-    <Cat v-if="display"></Cat>
+    <Cat v-show="display"></Cat>
     <Time
       :second="timeConf.second"
       class="background-void"
@@ -9,7 +9,7 @@
     <Weather
       class="background-void"
       :cityName="weatherConf.cityName"
-      v-if="display"
+      v-show="display"
     ></Weather>
     <Search
       class="background-void"
@@ -44,8 +44,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-
 import Sidebar from "./sidebar/Sidebar.vue";
 import ComponentsSwitch from "./center-components/ComponentsSwitch.vue";
 import Time from "./time/Time.vue";
