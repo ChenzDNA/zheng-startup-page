@@ -1,15 +1,14 @@
 <template>
   <div id="weather">
-    
     <p>{{ realCityName }}</p>
     <br />
-    
+
     <p>天气：{{ weather }}</p>
     <br />
-    
+
     <p>温度：{{ tempLow }} ~ {{ tempHigh }}</p>
     <br />
-    
+
     <p>风向：{{ windDirection }} {{ windStrength }}</p>
     <br />
     <p>{{ infoText }}</p>
@@ -63,9 +62,7 @@ export default {
       return cityName;
     },
   },
-  mounted() {
-    this.getWeatherInfo(this.cityName);
-  },
+  mounted() {},
   computed: {
     realCityName() {
       this.getWeatherInfo(this.cityName);
