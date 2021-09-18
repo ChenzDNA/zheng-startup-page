@@ -1,20 +1,37 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
-    <Cat></Cat>
-    <Time :second="timeConf.second" class="background-void"></Time>
-    <Weather class="background-void" :cityName="weatherConf.cityName"></Weather>
+    <Cat v-if="display"></Cat>
+    <Time
+      :second="timeConf.second"
+      class="background-void"
+      v-if="display"
+    ></Time>
+    <Weather
+      class="background-void"
+      :cityName="weatherConf.cityName"
+      v-if="display"
+    ></Weather>
     <Search
       class="background-void"
       :searchEngine="searchConf.searchEngine"
       :searchEngines="searchConf.searchEngines"
+      v-if="display"
     ></Search>
-    <ComponentsSwitch></ComponentsSwitch>
+    <ComponentsSwitch v-if="display"></ComponentsSwitch>
     <div
       id="curtain"
       v-if="curtainConf.curtain"
       class="background-void"
       @click="sidebarIn"
     ></div>
+    <button
+      id="see-background"
+      class="background-void"
+      @click="display = !display"
+    >
+      查看背景图片
+    </button>
+
     <Sidebar
       :timeConf="timeConf"
       :searchConf="searchConf"
@@ -48,6 +65,8 @@ export default {
   },
   data() {
     return {
+      display: true,
+      imageUrl: "https://api.dujin.org/bing/1920.php",
       timeConf: {
         second: true,
         fontColor: "#a2f58f",
@@ -62,12 +81,11 @@ export default {
       weatherConf: {
         cityName: "湘潭",
       },
-      imageUrl: "https://api.dujin.org/bing/1920.php",
       curtainConf: {
-        curtain: true,
+        curtain: false,
       },
       sidebarConf: {
-        realRight: "-10px",
+        realRight: "-300px",
       },
     };
   },
@@ -110,5 +128,15 @@ body {
   left: 0;
   height: 100vh;
   width: 100vw;
+}
+#see-background {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  user-select: none;
+  outline: none;
+  border: 0;
+  padding: 5px;
+  color: white;
 }
 </style>
