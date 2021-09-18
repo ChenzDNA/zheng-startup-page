@@ -17,8 +17,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-
 export default {
   name: "Weather",
   props: {
@@ -45,7 +43,7 @@ export default {
   },
   methods: {
     getWeatherInfo(cityName) {
-      // axios
+      // this.$axios
       //   .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
       //   .then((res) => {
       //     let data = res.data.data;
