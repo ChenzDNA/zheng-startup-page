@@ -1,16 +1,16 @@
 <template>
   <div id="weather">
-    <i class="fa fa-home fa-2x fa-fw"></i>
+    
     <p>{{ realCityName }}</p>
     <br />
-    <i class="fa fa-2x fa-fw" :class="weatherClass"></i>
-    <p>{{ weather }}</p>
+    
+    <p>天气：{{ weather }}</p>
     <br />
-    <i class="fa fa-thermometer-half fa-2x fa-fw"></i>
-    <p>{{ tempLow }} ~ {{ tempHigh }}</p>
+    
+    <p>温度：{{ tempLow }} ~ {{ tempHigh }}</p>
     <br />
-    <i class="fa fa-paper-plane fa-2x fa-fw"></i>
-    <p>{{ windDirection }} {{ windStrength }}</p>
+    
+    <p>风向：{{ windDirection }} {{ windStrength }}</p>
     <br />
     <p>{{ infoText }}</p>
   </div>
@@ -43,23 +43,23 @@ export default {
   },
   methods: {
     getWeatherInfo(cityName) {
-      // this.$axios
-      //   .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
-      //   .then((res) => {
-      //     let data = res.data.data;
-      //     this.windStrength = data["forecast"][0]["fengli"]
-      //       .split("[")[2]
-      //       .split("]")[0];
-      //     this.windDirection = data["forecast"][0]["fengxiang"];
-      //     this.infoText = data["ganmao"];
-      //     this.weather = data["forecast"][0]["type"];
-      //     this.weatherClass = this.weatherClasses[this.weather];
-      //     this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
-      //     this.tempLow = data["forecast"][0]["low"].split(" ")[1];
-      //   })
-      //   .catch(() => {
-      //     console.log("jiba");
-      //   });
+      this.$axios
+        .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
+        .then((res) => {
+          let data = res.data.data;
+          this.windStrength = data["forecast"][0]["fengli"]
+            .split("[")[2]
+            .split("]")[0];
+          this.windDirection = data["forecast"][0]["fengxiang"];
+          this.infoText = data["ganmao"];
+          this.weather = data["forecast"][0]["type"];
+          this.weatherClass = this.weatherClasses[this.weather];
+          this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
+          this.tempLow = data["forecast"][0]["low"].split(" ")[1];
+        })
+        .catch(() => {
+          console.log("jiba");
+        });
       return cityName;
     },
   },
