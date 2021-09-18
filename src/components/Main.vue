@@ -1,6 +1,5 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
-    
     <Cat></Cat>
     <Time :second="timeConf.second" class="background-void"></Time>
     <Weather class="background-void" :cityName="weatherConf.cityName"></Weather>
@@ -10,10 +9,18 @@
       :searchEngines="searchConf.searchEngines"
     ></Search>
     <ComponentsSwitch></ComponentsSwitch>
+    <div
+      id="curtain"
+      v-if="curtainConf.curtain"
+      class="background-void"
+      @click="sidebarIn"
+    ></div>
     <Sidebar
       :timeConf="timeConf"
       :searchConf="searchConf"
       :weatherConf="weatherConf"
+      :curtainConf="curtainConf"
+      :sidebarConf="sidebarConf"
       class="background-void"
     ></Sidebar>
   </div>
@@ -56,11 +63,21 @@ export default {
         cityName: "湘潭",
       },
       imageUrl: "https://api.dujin.org/bing/1920.php",
+      curtainConf: {
+        curtain: true,
+      },
+      sidebarConf: {
+        realRight: "-10px",
+      },
     };
   },
-  mounted() {
-    
+  methods: {
+    sidebarIn() {
+      this.sidebarConf.realRight = "-300px";
+      this.curtainConf.curtain = false;
+    },
   },
+  mounted() {},
 };
 </script>
 
@@ -86,5 +103,12 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+}
+#curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
 }
 </style>

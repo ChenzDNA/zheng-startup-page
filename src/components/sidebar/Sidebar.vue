@@ -1,6 +1,14 @@
 <template>
-  <div id="sidebar" @mouseleave="slideIn" :style="{ right: barRight }">
-    <div id="sidebar-move" @mouseenter="slideOut"></div>
+  <div
+    id="sidebar"
+    @click.prevent="slideIn"
+    :style="{ right: sidebarConf.realRight }"
+  >
+    <div
+      id="sidebar-move"
+      @click.prevent="slideOut"
+      class="background-void"
+    ></div>
     <div>
       <input
         type="checkbox"
@@ -24,7 +32,13 @@
     </div>
     <div id="weather-cityname">
       <label for="cityname">查询城市天气 </label>
-      <input type="text" name="cityname" id="cityname" v-model="cityName" />
+      <input
+        type="text"
+        name="cityname"
+        id="cityname"
+        v-model="cityName"
+        @keydown.enter="submitCityname"
+      />
       <button @click="submitCityname">确定</button>
     </div>
   </div>
@@ -37,23 +51,29 @@ export default {
     timeConf: Object,
     searchConf: Object,
     weatherConf: Object,
+    curtainConf: Object,
+    sidebarConf: Object,
   },
   data() {
     return {
-      barRight: "-10px",
-      // barRight: "-300px",
       cityName: "湘潭",
     };
   },
   methods: {
     slideOut() {
-      this.barRight = "-10px";
+      if (this.curtainConf.curtain) {
+        this.curtainConf.curtain = false;
+        this.sidebarConf.realRight = "-300px";
+        return;
+      }
+      this.sidebarConf.realRight = "-10px";
+      this.curtainConf.curtain = true;
     },
-    slideIn() {
-      this.barRight = "-300px";
-    },
+    slideIn() {},
     submitCityname() {
       this.weatherConf.cityName = this.cityName;
+      this.sidebarConf.realRight = "-300px";
+      this.curtainConf.curtain = false;
     },
   },
 };
@@ -79,14 +99,16 @@ export default {
 
 #sidebar-move {
   /* border: 1px solid red; */
-
   margin: 0;
 
-  width: 10px;
-  height: 100vh;
+  width: 15px;
+  height: 8vh;
   position: absolute;
-  left: -5px;
-  border-radius: 10px;
+  left: -15px;
+  top: 45vh;
+  border-radius: 10px 0 0 10px;
+
+  cursor: pointer;
 }
 
 #engine-select {
