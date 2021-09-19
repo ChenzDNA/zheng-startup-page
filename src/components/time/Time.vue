@@ -62,6 +62,7 @@ export default {
   top: 30px;
   width: 175px;
   padding: 0px 15px;
+  user-select: none;
 }
 #time-text > * {
   display: inline-block;

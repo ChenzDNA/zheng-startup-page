@@ -1,7 +1,7 @@
 <template>
   <div
     id="sidebar"
-    @click.prevent="slideIn"
+    @click="slideIn"
     :style="{ right: sidebarConf.realRight }"
   >
     <div
@@ -102,7 +102,7 @@ export default {
   margin: 0;
 
   width: 15px;
-  height: 8vh;
+  height: 80px;
   position: absolute;
   left: -15px;
   top: 45vh;
