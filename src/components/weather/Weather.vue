@@ -29,15 +29,6 @@ export default {
       windStrength: "<3级",
       weather: "晴",
       infoText: "",
-      weatherClass: "",
-      weatherClasses: {
-        多云: "fa-cloud",
-        雪: "fa-snowflake-o",
-        雷: "fa-flash",
-        雨: "fa-tint",
-        小雨: "fa-tint",
-        晴: "fa-sun-o",
-      },
     };
   },
   methods: {
@@ -52,7 +43,6 @@ export default {
           this.windDirection = data["forecast"][0]["fengxiang"];
           this.infoText = data["ganmao"];
           this.weather = data["forecast"][0]["type"];
-          this.weatherClass = this.weatherClasses[this.weather];
           this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
           this.tempLow = data["forecast"][0]["low"].split(" ")[1];
         })
