@@ -136,5 +136,6 @@ body {
   border: 0;
   padding: 5px;
   color: white;
+  cursor: pointer;
 }
 </style>
