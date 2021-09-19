@@ -9,7 +9,7 @@
         class="background-void"
       ></router-link>
     </div>
-    <div id="content" class="background-void">
+    <div id="content" class="background-void beautify-scrollbar">
       <router-view></router-view>
     </div>
   </div>
@@ -82,15 +82,18 @@ a {
   height: 70vh;
   overflow-y: scroll;
 }
-#content::-webkit-scrollbar {
+.beautify-scrollbar{
+
+}
+.beautify-scrollbar::-webkit-scrollbar {
   width: 10px;
   background-color: rgba(0, 0, 0, 0);
 }
-#content::-webkit-scrollbar-thumb {
+.beautify-scrollbar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.2);
 }
-#content::-webkit-scrollbar-thumb:hover {
+.beautify-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
 </style>
