@@ -1,6 +1,6 @@
 <template>
   <div id="weather">
-    <p>{{ realCityName }}</p>
+    <p>地点：{{ realCityName }}</p>
     <br />
 
     <p>天气：{{ weather }}</p>
@@ -47,7 +47,12 @@ export default {
           this.tempLow = data["forecast"][0]["low"].split(" ")[1];
         })
         .catch(() => {
-          console.log("jiba");
+          this.windStrength = "";
+          this.windDirection = "";
+          this.infoText = "请确保输入正确的地名";
+          this.weather = "";
+          this.tempHigh = "";
+          this.tempLow = "";
         });
       return cityName;
     },
