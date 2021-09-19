@@ -82,9 +82,9 @@ a {
   height: 70vh;
   overflow-y: scroll;
 }
-.beautify-scrollbar{
+/* .beautify-scrollbar{
 
-}
+} */
 .beautify-scrollbar::-webkit-scrollbar {
   width: 10px;
   background-color: rgba(0, 0, 0, 0);
