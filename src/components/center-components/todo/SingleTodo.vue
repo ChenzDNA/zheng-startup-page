@@ -2,7 +2,7 @@
   <div class="single-todo">
     <div
       @click="data.finished = !data.finished"
-      v-text="`${data.finished ? '已完成' : '未完成'}`"
+      v-text="`${data.finished ? '☑' : '☐'}`"
       :class="`${data.finished ? 'todo-back' : 'todo-finish'}`"
     ></div>
     <div v-html="data.content" :class="`${data.finished ? 'done' : ''}`"></div>
@@ -47,6 +47,7 @@ export default {
   border-radius: 10px;
   user-select: none;
   cursor: pointer;
+  text-align: center;
 }
 .single-todo > div:nth-child(2) {
   flex: 1;
