@@ -41,20 +41,6 @@ const routes = [
     name: 'mobile',
     path: '/',
     component: MobileMain,
-    children: [
-      {
-        path: 'collection',
-        component: Collection,
-      },
-      {
-        path: '',
-        redirect: 'collection',
-      },
-      {
-        path: '*',
-        redirect: 'collection',
-      }
-    ],
   },
   {
     path: '*',

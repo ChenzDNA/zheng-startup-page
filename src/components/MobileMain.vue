@@ -5,47 +5,21 @@
       class="background-void"
       :searchEngine="searchConf.searchEngine"
       :searchEngines="searchConf.searchEngines"
-      v-if="display"
     ></MobileSearch>
-    <MobileComponentsSwitch v-if="display"></MobileComponentsSwitch>
-    <div
-      id="curtain"
-      v-if="curtainConf.curtain"
-      class="background-void"
-      @click="sidebarIn"
-    ></div>
-
-    <MobileSidebar
-      :timeConf="timeConf"
-      :searchConf="searchConf"
-      :weatherConf="weatherConf"
-      :curtainConf="curtainConf"
-      :sidebarConf="sidebarConf"
-      class="background-void"
-    ></MobileSidebar>
   </div>
 </template>
 
 <script>
-import MobileSidebar from "./sidebar/MobileSidebar.vue";
-import MobileComponentsSwitch from "./center-components/MobileComponentsSwitch.vue";
 import MobileSearch from "./search/MobileSearch.vue";
 
 export default {
   name: "Main",
   components: {
-    MobileSidebar,
     MobileSearch,
-    MobileComponentsSwitch,
   },
   data() {
     return {
-      display: true,
       imageUrl: "https://api.dujin.org/bing/1920.php",
-      timeConf: {
-        second: true,
-        fontColor: "#a2f58f",
-      },
       searchConf: {
         searchEngine: "bing",
         searchEngines: {
@@ -53,24 +27,8 @@ export default {
           baidu: "https://www.baidu.com/s?ie=UTF-8&wd=",
         },
       },
-      weatherConf: {
-        cityName: "湘潭",
-      },
-      curtainConf: {
-        curtain: false,
-      },
-      sidebarConf: {
-        realRight: "-300px",
-      },
     };
   },
-  methods: {
-    sidebarIn() {
-      this.sidebarConf.realRight = "-300px";
-      this.curtainConf.curtain = false;
-    },
-  },
-  mounted() {},
 };
 </script>
 

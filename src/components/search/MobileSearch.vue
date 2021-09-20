@@ -42,7 +42,6 @@ export default {
   color: white;
   padding-left: 20px;
   outline: none;
-  text-align: center;
   letter-spacing: 3px;
 }
 </style>
