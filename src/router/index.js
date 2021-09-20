@@ -1,15 +1,17 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Main from '../components/Main.vue';
+import Main from '../components/Main.vue'
 import Collection from '../components/center-components/collection/Collection.vue';
 import Note from '../components/center-components/note/Note.vue';
 import Todo from '../components/center-components/todo/Todo.vue';
+import MobileMain from '../components/MobileMain.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    name: 'pc',
     path: '/index',
     component: Main,
     children: [
@@ -36,8 +38,27 @@ const routes = [
     ],
   },
   {
+    name: 'mobile',
+    path: '/',
+    component: MobileMain,
+    children: [
+      {
+        path: 'collection',
+        component: Collection,
+      },
+      {
+        path: '',
+        redirect: 'collection',
+      },
+      {
+        path: '*',
+        redirect: 'collection',
+      }
+    ],
+  },
+  {
     path: '*',
-    redirect: '/index',
+    redirect: '/',
   }
 ]
 
