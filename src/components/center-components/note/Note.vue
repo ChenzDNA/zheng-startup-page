@@ -12,7 +12,7 @@
         v-html="note.title"
         @click="changeContent"
       ></div>
-      <div v-if="newNote">
+      <div v-show="newNote">
         <input
           id="new-note-input"
           type="text"
@@ -23,7 +23,7 @@
         />
       </div>
       <div id="note-control">
-        <div @click="newNote = true">新建</div>
+        <div @click="clickNewNote">新建</div>
         <div @click="deleteNote">删除</div>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <p v-html="title" v-if="!edit"></p>
       <br />
       <p v-html="content" v-if="!edit"></p>
-      <textarea v-model="content" v-show="edit"></textarea>
+      <textarea v-model="content" v-show="edit" id="edit-textarea"></textarea>
       <div v-html="timeText" v-show="!edit"></div>
       <p
         v-text="!edit ? '编辑' : '提交'"
@@ -115,6 +115,9 @@ export default {
       this.edit = !this.edit;
       if (this.edit) {
         this.content = this.content.replaceAll("<br />", "\n");
+        setTimeout(() => {
+          document.getElementById('edit-textarea').focus()
+        }, 10);
       } else {
         this.content = this.content.replaceAll("\n", "<br />");
       }
@@ -140,6 +143,12 @@ export default {
       this.content = "";
       this.timeText = "";
       this.contentIndex = -1;
+    },
+    clickNewNote() {
+      this.newNote = true;
+      setTimeout(() => {
+        document.getElementById("new-note-input").focus();
+      }, 10);
     },
   },
   computed: {
