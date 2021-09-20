@@ -108,9 +108,6 @@ export default {
 #main > * {
   border-radius: 10px;
 }
-body {
-  overflow: hidden;
-}
 .background-void {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
