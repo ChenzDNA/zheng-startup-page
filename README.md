@@ -1,5 +1,13 @@
 # zheng-startup-page
 
+一个起始页。
+
+<li> 自定义天气地点。
+<li> 可以切换搜索引擎。
+<li> 时钟可隐藏秒针。
+<li> 收藏、便签、待办都可以自定义。
+<li> 目前没写后台。
+
 ## Project setup
 ```
 npm install
@@ -19,6 +27,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
