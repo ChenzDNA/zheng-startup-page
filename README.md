@@ -8,6 +8,7 @@
 <li> 时钟可隐藏秒针。
 <li> 收藏、便签、待办都可以自定义。
 <li> 目前没写后台。
+<li> PC浏览器左下角的猫是<a href="https://github.com/zhanyuzhang/lovely-cat">lovely-cat</a>
 
 ## Project setup
 ```
