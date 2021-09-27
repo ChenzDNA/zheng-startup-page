@@ -27,7 +27,6 @@ export default {
     },
   },
   mounted() {
-    console.log(navigator)
     if (this.isPC()) {
       this.$router.push('/index');
     }
