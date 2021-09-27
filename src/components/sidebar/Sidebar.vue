@@ -83,7 +83,6 @@ export default {
 #sidebar {
   width: 300px;
   height: 100vh;
-  /* border: 1px solid red; */
 
   position: absolute;
   top: 0;
