@@ -34,7 +34,7 @@
       <textarea v-model="content" v-show="edit" id="edit-textarea"></textarea>
       <div v-html="timeText" v-show="!edit"></div>
       <p
-        v-text="!edit ? '编辑' : '提交'"
+        v-text="!edit ? '编辑' : '完成'"
         id="edit-button"
         @click="submitContent"
         v-if="contentIndex !== -1"
