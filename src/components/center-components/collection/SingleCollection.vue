@@ -1,8 +1,15 @@
 <template>
-  <div id="single-collection">
+  <div class="single-collection" v-if="colle.visible">
     <a :href="colle.url">
       <div :style="{ backgroundColor: colle.color }">
         {{ colle.name.slice(0, 3).toUpperCase() }}
+        <div
+          class="collection-delete"
+          @click.prevent="deleteCollection"
+          v-show="edit"
+        >
+          x
+        </div>
       </div>
       <p>{{ colle.name }}</p>
     </a>
@@ -14,23 +21,30 @@ export default {
   name: "SingleCollection",
   props: {
     colle: Object,
+    edit: Boolean,
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    deleteCollection() {
+      this.colle.visible = false;
+    },
   },
 };
 </script>
 
 <style>
-#single-collection {
-  /* border: 1px solid red; */
+.single-collection {
   margin: auto;
 }
-#single-collection > a {
+.single-collection > a {
   color: white;
 }
-#single-collection > a > div:hover {
+.single-collection > a > div:hover {
   transform: scale(1.1);
 }
-#single-collection > a > div {
-  /* border: 1px solid red; */
+.single-collection > a > div {
   position: relative;
   top: 30px;
   height: 100px;
@@ -43,8 +57,19 @@ export default {
 
   transition: 0.1s;
 }
-#single-collection > a > p {
+.single-collection > a > p {
   position: relative;
   top: 40px;
+  width: 100px;
+  overflow: hidden;
+}
+.collection-delete {
+  position: absolute;
+  font-size: 30px;
+  top: -50px;
+  right: 0;
+}
+.collection-delete:hover {
+  font-size: 50px;
 }
 </style>
