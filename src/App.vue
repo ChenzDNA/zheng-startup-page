@@ -10,9 +10,8 @@ export default {
       let userAgentInfo = navigator.userAgent;
       let Agents = [
         "Android",
-        "iPhone",
+        "Phone",
         "SymbianOS",
-        "Windows Phone",
         "iPad",
         "iPod",
       ];
@@ -28,7 +27,7 @@ export default {
   },
   mounted() {
     if (this.isPC()) {
-      this.$router.push('/index');
+      this.$router.push("/index");
     }
   },
 };
@@ -38,6 +37,11 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 body {
   overflow: hidden;
