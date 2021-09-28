@@ -1,14 +1,20 @@
 <template>
-  <div
-    id="sidebar"
-    @click="slideIn"
-    :style="{ right: sidebarConf.realRight }"
-  >
+  <div id="sidebar" @click="slideIn" :style="{ right: sidebarConf.realRight }">
     <div
       id="sidebar-move"
       @click.prevent="slideOut"
       class="background-void"
     ></div>
+    <div id="user-selections">
+      <p>
+        {{
+          userState.isLogin
+            ? `欢迎！${userState.userName}`
+            : "若想使用自定义信息，请先登录"
+        }}
+      </p>
+      <Login v-if="!userState.isLogin"></Login>
+    </div>
     <div>
       <input
         type="checkbox"
@@ -45,6 +51,9 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import Login from "./Login.vue";
+
 export default {
   name: "Sidebar",
   props: {
@@ -54,10 +63,16 @@ export default {
     curtainConf: Object,
     sidebarConf: Object,
   },
+  components: {
+    Login,
+  },
   data() {
     return {
       cityName: "湘潭",
     };
+  },
+  computed: {
+    ...mapState(["userState"]),
   },
   methods: {
     slideOut() {

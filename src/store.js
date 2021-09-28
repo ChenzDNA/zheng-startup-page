@@ -4,7 +4,14 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  
+  userState: {
+    isLogin: false,
+    userName: 'cz',
+    collections: [],
+    notes: [],
+    todos: [],
+    cityName: '',
+  },
 }
 const getters = {
 
