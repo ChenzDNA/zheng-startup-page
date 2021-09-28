@@ -144,7 +144,7 @@ export default {
   overflow: hidden;
 }
 #note-list {
-  height: calc(70vh - 30px);
+  height: 70vh;
   width: 230px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -220,7 +220,7 @@ export default {
 }
 #note-control {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 222px;
   height: 30px;
   display: flex;
