@@ -83,7 +83,7 @@ export default {
         curtain: false,
       },
       sidebarConf: {
-        realRight: "-10px",
+        realRight: "-300px",
       },
     };
   },
