@@ -12,6 +12,7 @@ const state = {
     todos: [],
     cityName: '',
   },
+  loginMsg: '',
 }
 const getters = {
 

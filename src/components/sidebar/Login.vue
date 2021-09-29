@@ -8,10 +8,13 @@
     <br />
     <div>登录</div>
     <div>注册</div>
+    <br>
+    <p id="login-msg">{{ loginMsg }}</p>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -19,6 +22,9 @@ export default {
       account: "",
       password: "",
     };
+  },
+  computed: {
+    ...mapState(["loginMsg"]),
   },
 };
 </script>
@@ -35,5 +41,8 @@ export default {
 #login > div:hover {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+}
+#login-msg{
+  color: red;
 }
 </style>
