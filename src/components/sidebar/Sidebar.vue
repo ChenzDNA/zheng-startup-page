@@ -17,12 +17,11 @@
       <UserConf v-if="userState.isLogin"></UserConf>
     </div>
     <div>
-      <input
-        type="checkbox"
-        name="time-conf-second"
-        id="time-conf-second"
-        v-model="timeConf.second"
-      />
+      <input type="checkbox" id="cat-conf-display" v-model="catConf.display" />
+      <label for="cat-conf-display"> 猫（需要一些加载时间）</label>
+    </div>
+    <div>
+      <input type="checkbox" id="time-conf-second" v-model="timeConf.second" />
       <label for="time-conf-second"> 显示秒数</label>
     </div>
     <div id="engine-select">
@@ -64,6 +63,7 @@ export default {
     weatherConf: Object,
     curtainConf: Object,
     sidebarConf: Object,
+    catConf: Object,
   },
   components: {
     Login,

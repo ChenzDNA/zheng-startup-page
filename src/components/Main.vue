@@ -1,6 +1,6 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
-    <Cat v-show="display"></Cat>
+    <Cat v-if="display && catConf.display"></Cat>
     <Time
       :second="timeConf.second"
       class="background-void"
@@ -38,6 +38,7 @@
       :weatherConf="weatherConf"
       :curtainConf="curtainConf"
       :sidebarConf="sidebarConf"
+      :catConf="catConf"
       class="background-void"
     ></Sidebar>
   </div>
@@ -84,6 +85,9 @@ export default {
       },
       sidebarConf: {
         realRight: "-300px",
+      },
+      catConf: {
+        display: false,
       },
     };
   },

@@ -1,6 +1,6 @@
 <template>
   <div id="cat">
-    <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html"></iframe>
+    <iframe id="cat-iframe" src="https://zhanyuzhang.github.io/lovely-cat/cat.html"></iframe>
   </div>
 </template>
 
