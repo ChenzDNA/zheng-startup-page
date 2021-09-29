@@ -10,10 +10,11 @@
         {{
           userState.isLogin
             ? `欢迎！${userState.userName}`
-            : "若想使用自定义信息，请先登录"
+            : "若想保存自定义信息，请先登录"
         }}
       </p>
       <Login v-if="!userState.isLogin"></Login>
+      <UserConf v-if="userState.isLogin"></UserConf>
     </div>
     <div>
       <input
@@ -53,6 +54,7 @@
 <script>
 import { mapState } from "vuex";
 import Login from "./Login.vue";
+import UserConf from "./UserConf.vue";
 
 export default {
   name: "Sidebar",
@@ -65,6 +67,7 @@ export default {
   },
   components: {
     Login,
+    UserConf,
   },
   data() {
     return {
@@ -112,7 +115,6 @@ export default {
 }
 
 #sidebar-move {
-  /* border: 1px solid red; */
   margin: 0;
 
   width: 15px;
