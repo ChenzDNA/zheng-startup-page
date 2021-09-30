@@ -45,7 +45,6 @@ export default {
           content: "搭后台",
           timeText: "9月20日",
           finished: false,
-          needAlarm: false,
           visible: true,
           index: 0,
           ctime: "",

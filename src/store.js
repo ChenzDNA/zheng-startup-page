@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   userState: {
+    id: '',
     isLogin: false,
     userName: 'cz',
     collections: [],
