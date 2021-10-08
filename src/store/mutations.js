@@ -1,3 +1,3 @@
-export default mutations = {
-
+export default {
+  
 }
