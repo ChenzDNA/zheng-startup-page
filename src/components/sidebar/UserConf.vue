@@ -5,7 +5,7 @@
     </div>
     <div id="user-conf-items" v-show="userConfEdit">
       <label for="conf-nickname">昵称：</label>
-      <input type="text" id="conf-nickname" v-model="newUickName" />
+      <input type="text" id="conf-nickname" v-model="newNickName" />
       <br />
       <label for="conf-password">密码：</label>
       <input type="password" id="conf-password" v-model="password" />
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       userConfEdit: false,
-      newUserName: "",
+      newNickName: "",
       password: "",
     };
   },
