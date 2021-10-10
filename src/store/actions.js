@@ -10,17 +10,16 @@ export default {
       data,
       method: 'post',
     }).then(res => {
-      commit('userLogin', res)
+      commit('updateUserState', res)
     })
   },
   userRegister({ commit }, data) {
-    console.log('in register')
     request({
       url: '/user/register',
       data,
       method: 'post',
     }).then(res => {
-      commit('userRegister', res)
+      commit('updateUserState', res)
     })
   },
   updateLoginMsg({ commit }, msg) {
