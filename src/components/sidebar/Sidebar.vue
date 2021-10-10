@@ -47,6 +47,9 @@
       />
       <button @click="submitCityname">确定</button>
     </div>
+    <div>
+      <button>退出登录</button>
+    </div>
   </div>
 </template>
 
