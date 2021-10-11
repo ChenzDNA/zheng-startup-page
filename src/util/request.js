@@ -24,11 +24,13 @@ export default function request(config) {
   )
 
   // 把数据转成 FormData
-  let data = new FormData
-  for (let key of Object.keys(config.data)) {
-    data.append(key, config.data[key])
+  if (config.data != null && config.data != undefined) {
+    let data = new FormData
+    for (let key of Object.keys(config.data)) {
+      data.append(key, config.data[key])
+    }
+    config.data = data
   }
-  config.data = data
 
   // 3.发送真正的网络请求
   return instance(config)

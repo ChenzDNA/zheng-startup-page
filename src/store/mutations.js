@@ -9,5 +9,11 @@ export default {
   },
   updateLoginMsg(state, msg) {
     state.loginMsg = msg;
+  },
+  userLogout(state, data) {
+    if (data.code != 200) {
+      alert('error');
+    }
+    state.userState.isLogin = false
   }
 }

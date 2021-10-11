@@ -48,13 +48,13 @@
       <button @click="submitCityname">确定</button>
     </div>
     <div>
-      <button>退出登录</button>
+      <button @click="userLogout">退出登录</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import Login from "./Login.vue";
 import UserConf from "./UserConf.vue";
 
@@ -96,6 +96,7 @@ export default {
       this.sidebarConf.realRight = "-300px";
       this.curtainConf.curtain = false;
     },
+    ...mapActions(["userLogout"]),
   },
 };
 </script>

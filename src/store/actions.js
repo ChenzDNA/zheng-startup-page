@@ -25,4 +25,13 @@ export default {
   updateLoginMsg({ commit }, msg) {
     commit('updateLoginMsg', msg)
   },
+  userLogout({ commit }) {
+    request({
+      url: '/user/logout',
+      method: 'post'
+    }).then(res => {
+      console.log(res)
+      commit('userLogout', res)
+    })
+  }
 }
