@@ -14,38 +14,10 @@
         }}
       </p>
       <Login v-if="!userState.isLogin"></Login>
-      <UserConf v-if="userState.isLogin"></UserConf>
-    </div>
-    <div>
-      <input type="checkbox" id="cat-conf-display" v-model="catConf.display" />
-      <label for="cat-conf-display"> 猫（需要一些加载时间）</label>
-    </div>
-    <div>
-      <input type="checkbox" id="time-conf-second" v-model="timeConf.second" />
-      <label for="time-conf-second"> 显示秒数</label>
-    </div>
-    <div id="engine-select">
-      <p>选择搜索引擎&emsp;</p>
-      <select v-model="searchConf.searchEngine">
-        <option value="" disabled>请选择</option>
-        <option
-          v-for="(engine, index) in Object.keys(searchConf.searchEngines)"
-          :key="index"
-          :value="engine"
-          v-html="engine"
-        ></option>
-      </select>
-    </div>
-    <div id="weather-cityname">
-      <label for="cityname">查询城市天气 </label>
-      <input
-        type="text"
-        name="cityname"
-        id="cityname"
-        v-model="cityName"
-        @keydown.enter="submitCityname"
-      />
-      <button @click="submitCityname">确定</button>
+      <UserConf
+        v-if="userState.isLogin"
+        :submitCityname="submitCityname"
+      ></UserConf>
     </div>
     <div>
       <button @click="userLogout">退出登录</button>
@@ -68,18 +40,8 @@ export default {
     Login,
     UserConf,
   },
-  data() {
-    return {
-      cityName: "湘潭",
-    };
-  },
   computed: {
-    ...mapState([
-      "userState",
-      "timeConf",
-      "searchConf",
-      "catConf",
-    ]),
+    ...mapState(["userState", "timeConf", "searchConf", "catConf"]),
   },
   methods: {
     slideOut() {
@@ -92,8 +54,8 @@ export default {
       this.curtainConf.curtain = true;
     },
     slideIn() {},
-    submitCityname() {
-      this.userState.cityName = this.cityName;
+    submitCityname(cityName) {
+      this.userState.cityName = cityName;
       this.sidebarConf.realRight = "-300px";
       this.curtainConf.curtain = false;
     },
@@ -115,8 +77,8 @@ export default {
 
 #sidebar > * {
   margin-left: 10%;
-  margin-top: 20px;
   user-select: none;
+  margin-top: 20px;
 }
 
 #sidebar-move {
@@ -131,27 +93,7 @@ export default {
 
   cursor: pointer;
 }
-
-#engine-select {
-  display: inline-block;
-}
-#engine-select > select {
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  height: 25px;
-  border: 1px solid white;
-  border-radius: 5px;
-  outline: none;
-}
-#engine-select > select option {
-  background: rgb(51, 48, 48);
-  color: white;
-}
 input {
   outline: none;
-}
-#weather-cityname > input {
-  width: 70px;
-  line-height: 18px;
 }
 </style>

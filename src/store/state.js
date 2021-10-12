@@ -20,9 +20,6 @@ export default {
       baidu: "https://www.baidu.com/s?ie=UTF-8&wd=",
     },
   },
-  weatherConf: {
-    cityName: "湘潭",
-  },
   catConf: {
     display: false,
   },

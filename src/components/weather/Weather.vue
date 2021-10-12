@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 export default {
   name: "Weather",
   props: {
@@ -34,37 +34,36 @@ export default {
   },
   methods: {
     getWeatherInfo(cityName) {
-      this.$axios
-        .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
-        .then((res) => {
-          let data = res.data.data;
-          this.windStrength = data["forecast"][0]["fengli"]
-            .split("[")[2]
-            .split("]")[0];
-          this.windDirection = data["forecast"][0]["fengxiang"];
-          this.infoText = data["ganmao"];
-          this.weather = data["forecast"][0]["type"];
-          this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
-          this.tempLow = data["forecast"][0]["low"].split(" ")[1];
-        })
-        .catch(() => {
-          this.windStrength = "";
-          this.windDirection = "";
-          this.infoText = "请确保输入正确的地名";
-          this.weather = "";
-          this.tempHigh = "";
-          this.tempLow = "";
-        });
+      // this.$axios
+      //   .get(`http://wthrcdn.etouch.cn/weather_mini?city=${cityName}`)
+      //   .then((res) => {
+      //     let data = res.data.data;
+      //     this.windStrength = data["forecast"][0]["fengli"]
+      //       .split("[")[2]
+      //       .split("]")[0];
+      //     this.windDirection = data["forecast"][0]["fengxiang"];
+      //     this.infoText = data["ganmao"];
+      //     this.weather = data["forecast"][0]["type"];
+      //     this.tempHigh = data["forecast"][0]["high"].split(" ")[1];
+      //     this.tempLow = data["forecast"][0]["low"].split(" ")[1];
+      //   })
+      //   .catch(() => {
+      //     this.windStrength = "";
+      //     this.windDirection = "";
+      //     this.infoText = "请确保输入正确的地名";
+      //     this.weather = "";
+      //     this.tempHigh = "";
+      //     this.tempLow = "";
+      //   });
       return cityName;
     },
   },
   mounted() {},
   computed: {
     realCityName() {
-      this.getWeatherInfo(this.userState.cityName);
-      return this.userState.cityName;
+      return this.getWeatherInfo(this.userState.cityName);
     },
-    ...mapState(['userState'])
+    ...mapState(["userState"]),
   },
 };
 </script>
