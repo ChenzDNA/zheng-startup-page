@@ -61,12 +61,8 @@ import UserConf from "./UserConf.vue";
 export default {
   name: "Sidebar",
   props: {
-    timeConf: Object,
-    searchConf: Object,
-    weatherConf: Object,
     curtainConf: Object,
     sidebarConf: Object,
-    catConf: Object,
   },
   components: {
     Login,
@@ -78,7 +74,12 @@ export default {
     };
   },
   computed: {
-    ...mapState(["userState"]),
+    ...mapState([
+      "userState",
+      "timeConf",
+      "searchConf",
+      "catConf",
+    ]),
   },
   methods: {
     slideOut() {
@@ -92,7 +93,7 @@ export default {
     },
     slideIn() {},
     submitCityname() {
-      this.weatherConf.cityName = this.cityName;
+      this.userState.cityName = this.cityName;
       this.sidebarConf.realRight = "-300px";
       this.curtainConf.curtain = false;
     },
