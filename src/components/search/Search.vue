@@ -1,16 +1,18 @@
 <template>
   <div id="search">
-    <input type="text" v-model="searchValue" @keydown.enter="doSearch" placeholder="🔍"/>
+    <input
+      type="text"
+      v-model="searchValue"
+      @keydown.enter="doSearch"
+      placeholder="🔍"
+    />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Search",
-  props: {
-    searchEngine: String,
-    searchEngines: Object,
-  },
   data() {
     return {
       searchValue: "",
@@ -18,8 +20,13 @@ export default {
   },
   methods: {
     doSearch() {
-      self.location = this.searchEngines[this.searchEngine] + this.searchValue;
+      self.location =
+        this.searchConf.searchEngines[this.searchConf.searchEngine] +
+        this.searchValue;
     },
+  },
+  computed: {
+    ...mapState(["searchConf"]),
   },
 };
 </script>

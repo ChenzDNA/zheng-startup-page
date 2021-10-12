@@ -1,8 +1,6 @@
 <template>
   <div id="user-conf">
-    <div @click="submitUserConf">
-      {{ userConfEdit ? "提交修改" : "编辑个人信息" }}
-    </div>
+    <div @click="submitUserConf" v-show="!userConfEdit">编辑昵称</div>
     <div id="user-conf-items" v-show="userConfEdit">
       <label for="conf-nickname">昵称：</label>
       <input type="text" id="conf-nickname" v-model="newNickName" />
@@ -15,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "UserConf",
   data() {
@@ -27,7 +26,21 @@ export default {
   methods: {
     submitUserConf() {
       this.userConfEdit = !this.userConfEdit;
+      if (this.userConfEdit) {
+        return;
+      }
+      if (this.newNickName === "" || this.password === "") {
+        alert("新用户名或密码为空");
+        return;
+      }
+      this.updateNickname({
+        nickname: this.newNickName,
+        password: this.password,
+      });
+      this.newNickName = "";
+      this.password = "";
     },
+    ...mapActions(["updateUserData"]),
   },
 };
 </script>

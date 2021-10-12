@@ -6,17 +6,15 @@
     <div class="time-num">{{ time[0] }}</div>
     <div class="split-mark">{{ splitMark }}</div>
     <div class="time-num">{{ time[1] }}</div>
-    <div class="split-mark" v-if="second">{{ splitMark }}</div>
-    <div class="time-num" v-if="second">{{ time[2] }}</div>
+    <div class="split-mark" v-if="timeConf.second">{{ splitMark }}</div>
+    <div class="time-num" v-if="timeConf.second">{{ time[2] }}</div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Time",
-  props: {
-    second: Boolean,
-  },
   data() {
     return {
       time: [],
@@ -27,11 +25,12 @@ export default {
   },
   computed: {
     realLeft() {
-      return this.second ? "30px" : "95px";
+      return this.timeConf.second ? "30px" : "95px";
     },
     realWidth() {
-      return this.second ? "175px" : "110px";
+      return this.timeConf.second ? "175px" : "110px";
     },
+    ...mapState(["timeConf"]),
   },
   mounted() {
     setInterval(() => {

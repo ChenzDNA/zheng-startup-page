@@ -1,22 +1,9 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
     <Cat v-if="display && catConf.display"></Cat>
-    <Time
-      :second="timeConf.second"
-      class="background-void"
-      v-if="display"
-    ></Time>
-    <Weather
-      class="background-void"
-      :cityName="weatherConf.cityName"
-      v-show="display"
-    ></Weather>
-    <Search
-      class="background-void"
-      :searchEngine="searchConf.searchEngine"
-      :searchEngines="searchConf.searchEngines"
-      v-if="display"
-    ></Search>
+    <Time class="background-void" v-if="display"></Time>
+    <Weather class="background-void" v-show="display"></Weather>
+    <Search class="background-void" v-if="display"></Search>
     <ComponentsSwitch v-if="display"></ComponentsSwitch>
     <div
       id="curtain"
@@ -33,12 +20,8 @@
     </button>
 
     <Sidebar
-      :timeConf="timeConf"
-      :searchConf="searchConf"
-      :weatherConf="weatherConf"
-      :curtainConf="curtainConf"
       :sidebarConf="sidebarConf"
-      :catConf="catConf"
+      :curtainConf="curtainConf"
       class="background-void"
     ></Sidebar>
   </div>
@@ -51,6 +34,7 @@ import Time from "./time/Time.vue";
 import Weather from "./weather/Weather.vue";
 import Cat from "./cat/Cat.vue";
 import Search from "./search/Search.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Main",
@@ -66,28 +50,11 @@ export default {
     return {
       display: true,
       imageUrl: "https://api.dujin.org/bing/1920.php",
-      timeConf: {
-        second: true,
-        fontColor: "#a2f58f",
-      },
-      searchConf: {
-        searchEngine: "bing",
-        searchEngines: {
-          bing: "https://www.bing.com/search?mkt=zh-CN&q=",
-          baidu: "https://www.baidu.com/s?ie=UTF-8&wd=",
-        },
-      },
-      weatherConf: {
-        cityName: "湘潭",
-      },
-      curtainConf: {
-        curtain: false,
-      },
       sidebarConf: {
         realRight: "-300px",
       },
-      catConf: {
-        display: false,
+      curtainConf: {
+        curtain: false,
       },
     };
   },
@@ -98,6 +65,9 @@ export default {
     },
   },
   mounted() {},
+  computed: {
+    ...mapState(["catConf"]),
+  },
 };
 </script>
 
