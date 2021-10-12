@@ -23,9 +23,6 @@ export default {
   weatherConf: {
     cityName: "湘潭",
   },
-  sidebarConf: {
-    realRight: "-300px",
-  },
   catConf: {
     display: false,
   },
