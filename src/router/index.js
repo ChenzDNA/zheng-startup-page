@@ -7,6 +7,11 @@ import Note from '../components/center-components/note/Note.vue';
 import Todo from '../components/center-components/todo/Todo.vue';
 import MobileMain from '../components/MobileMain.vue';
 
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(VueRouter)
 
 const routes = [
