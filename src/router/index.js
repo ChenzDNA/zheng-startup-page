@@ -16,7 +16,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    name: 'pc',
     path: '/index',
     component: Main,
     children: [
@@ -43,7 +42,6 @@ const routes = [
     ],
   },
   {
-    name: 'mobile',
     path: '/',
     component: MobileMain,
   },
