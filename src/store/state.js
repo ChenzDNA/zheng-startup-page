@@ -9,4 +9,24 @@ export default {
     cityName: '',
   },
   loginMsg: '',
+  timeConf: {
+    second: true,
+    fontColor: "#a2f58f",
+  },
+  searchConf: {
+    searchEngine: "bing",
+    searchEngines: {
+      bing: "https://www.bing.com/search?mkt=zh-CN&q=",
+      baidu: "https://www.baidu.com/s?ie=UTF-8&wd=",
+    },
+  },
+  weatherConf: {
+    cityName: "湘潭",
+  },
+  sidebarConf: {
+    realRight: "-300px",
+  },
+  catConf: {
+    display: false,
+  },
 }
