@@ -2,7 +2,7 @@
   <div class="single-collection" v-if="colle.visible">
     <a :href="colle.url">
       <div :style="{ backgroundColor: colle.color }">
-        {{ colle.name.slice(0, 3).toUpperCase() }}
+        {{ colle.name.slice(0, 2).toUpperCase() }}
         <div
           class="collection-delete"
           @click.prevent="deleteCollection"
