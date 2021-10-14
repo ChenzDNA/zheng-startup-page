@@ -88,12 +88,12 @@ export default {
     submitContent() {
       this.edit = !this.edit;
       if (this.edit) {
-        this.content = this.content.replaceAll("<br />", "\n");
+        this.content = this.content.replaceAll("<br/>", "\n");
         setTimeout(() => {
           document.getElementById('edit-textarea').focus()
         }, 10);
       } else {
-        this.content = this.content.replaceAll("\n", "<br />");
+        this.content = this.content.replaceAll("\n", "<br/>");
       }
       this.notes[this.contentIndex].content = this.content;
     },
