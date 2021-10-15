@@ -11,6 +11,9 @@ export default {
 
     state.userState.collections = data.collection
     state.userState.notes = data.note
+    for (let item of state.userState.notes) {
+      item.timeText = new Date(item.ctime).toLocaleDateString()
+    }
     state.userState.todos = data.todo
   },
   updateLoginMsg(state, msg) {
@@ -29,5 +32,24 @@ export default {
       return value.id === data.id
     })
     state.userState.collections.splice(ind, 1)
+  },
+  addNote(state, data) {
+    state.userState.notes.push(data)
+  },
+  deleteNote(state, data) {
+    let ind
+    state.userState.notes.find((value, index) => {
+      ind = index
+      return value.id === data.id
+    })
+    state.userState.notes.splice(ind, 1)
+  },
+  updateNote(state, data) {
+    let ind
+    state.userState.notes.find((value, index) => {
+      ind = index
+      return value.id === data.id
+    })
+    state.userState.notes.splice(ind,1,data)
   },
 }

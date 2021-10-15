@@ -90,4 +90,43 @@ export default {
       commit('deleteCollection', data)
     })
   },
+  addNote({ commit }, data) {
+    request({
+      url: '/note/insert',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.message)
+        return
+      }
+      commit('addNote', data)
+    })
+  },
+  deleteNote({ commit }, data) {
+    request({
+      url: '/note/delete',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.data)
+        return
+      }
+      commit('deleteNote', data)
+    })
+  },
+  updateNote({ commit },data) {
+    request({
+      url: '/note/update',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.data)
+        return
+      }
+      commit('updateNote', data)
+    })
+  }
 }

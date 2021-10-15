@@ -46,20 +46,11 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   name: "Note",
   data() {
     return {
-      notes: [
-        {
-          id: 0,
-          title: "使用须知",
-          content: "后台正在建设中，预计把这些自定义的东西都上传到服务器。<br />不会要求隐私信息。",
-          timeText: "2021年 9月20日",
-          ctime: 0,
-          mtime: 0,
-        },
-      ],
       title: "",
       content: "",
       timeText: "",
@@ -76,7 +67,7 @@ export default {
         item.classList.remove("note-item-selected");
       }
       e.target.classList.add("note-item-selected");
-      let itemData = this.notes[e.target.getAttribute("index")];
+      let itemData = this.userState.notes[e.target.getAttribute("index")];
       this.content = itemData.content;
       this.title = itemData.title;
       this.contentIndex = e.target.getAttribute("index");
@@ -89,30 +80,38 @@ export default {
       this.edit = !this.edit;
       if (this.edit) {
         this.content = this.content.replaceAll("<br/>", "\n");
+        this.content = this.content.replaceAll(" ", "&nbsp;");
+        this.content = this.content.replaceAll("<", "&lt;");
+        this.content = this.content.replaceAll(">", "&gt;");
         setTimeout(() => {
-          document.getElementById('edit-textarea').focus()
+          document.getElementById("edit-textarea").focus();
         }, 10);
       } else {
         this.content = this.content.replaceAll("\n", "<br/>");
+        this.content = this.content.replaceAll("&nbsp;", " ");
+        this.content = this.content.replaceAll("&lt;", "<");
+        this.content = this.content.replaceAll("&gt;", ">");
       }
-      this.notes[this.contentIndex].content = this.content;
+      this.updateNote({
+        id: this.userState.notes[this.contentIndex].id,
+        content: this.content,
+      });
     },
     createNewNote() {
       this.newNote = false;
       if (this.newTitle === "") return;
       console.log(this.newTitle);
-      this.notes.push({
+      this.addNote({
         id: 0,
         title: new String(this.newTitle),
         content: "",
-        timeText: "",
         ctime: 0,
         mtime: 0,
       });
       this.newTitle = "";
     },
     deleteNote() {
-      this.notes.splice(this.contentIndex, 1);
+      this.deleteNote(this.userState.notes[this.contentIndex]);
       this.title = "";
       this.content = "";
       this.timeText = "";
@@ -124,15 +123,17 @@ export default {
         document.getElementById("new-note-input").focus();
       }, 10);
     },
+    ...mapActions(["addNote", "deleteNote", "updateNote"]),
   },
   computed: {
     notesAfterFilter() {
       if (this.noteSearch !== "")
-        return this.notes.filter(
+        return this.userState.notes.filter(
           (note) => !(note.title.indexOf(this.noteSearch) < 0)
         );
-      else return this.notes;
+      else return this.userState.notes;
     },
+    ...mapState(["userState"]),
   },
 };
 </script>
