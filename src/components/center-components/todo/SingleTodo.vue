@@ -1,26 +1,33 @@
 <template>
   <div class="single-todo">
     <div
-      @click="data.finished = !data.finished"
+      @click="clickUpdateTodo"
       v-text="`${data.finished ? '☑' : '☐'}`"
       :class="`${data.finished ? 'todo-back' : 'todo-finish'}`"
     ></div>
     <div v-html="data.content" :class="`${data.finished ? 'done' : ''}`"></div>
     <div v-html="data.timeText"></div>
-    <div class="delete-todo" @click="deleteTodo">删除</div>
+    <div class="delete-todo" @click="clickDeleteTodo">删除</div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "SingleTodo",
   props: {
     data: Object,
   },
   methods: {
-    deleteTodo() {
+    clickDeleteTodo() {
       this.data.visible = false;
+      this.deleteTodo(this.data);
     },
+    clickUpdateTodo() {
+      this.data.finished = !this.data.finished;
+      this.updateTodo(this.data);
+    },
+    ...mapActions(["deleteTodo", "updateTodo"]),
   },
 };
 </script>

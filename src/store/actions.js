@@ -116,7 +116,7 @@ export default {
       commit('deleteNote', data)
     })
   },
-  updateNote({ commit },data) {
+  updateNote({ commit }, data) {
     request({
       url: '/note/update',
       data,
@@ -128,5 +128,45 @@ export default {
       }
       commit('updateNote', data)
     })
-  }
+  },
+  addTodo({ commit }, data) {
+    request({
+      url: '/todo/insert',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.message)
+        return
+      }
+      commit('addTodo', data)
+    })
+  },
+  deleteTodo({ commit }, data) {
+    request({
+      url: '/todo/delete',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.message)
+        return
+      }
+      commit('deleteTodo', data)
+    })
+  },
+  updateTodo({ commit }, data) {
+    data.finished = data.finished ? 2 : 1
+    request({
+      url: '/todo/update',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.data)
+        return
+      }
+      commit('updateTodo', data)
+    })
+  },
 }

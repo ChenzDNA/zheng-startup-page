@@ -15,7 +15,7 @@
         @keydown.enter="submitTodoItem"
         @blur="submitTodoItem"
       />
-      <div id="add-todo" @click="addTodo">添加</div>
+      <div id="add-todo" @click="clickAddTodo">添加</div>
     </div>
     <div id="todo-finished" class="beautify-scrollbar">
       <SingleTodo
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import SingleTodo from "./SingleTodo.vue";
 
 export default {
@@ -39,30 +40,19 @@ export default {
     return {
       addTodoCheck: false,
       addTodoText: "",
-      items: [
-        {
-          id: 0,
-          content: "搭后台",
-          timeText: "9月20日",
-          finished: false,
-          visible: true,
-          index: 0,
-          ctime: "",
-          mtime: "",
-        },
-      ],
     };
   },
   computed: {
     todoItems() {
-      return this.items.filter((item) => !item.finished && item.visible);
+      return this.userState.todos.filter((item) => !item.finished && item.visible);
     },
     finishedItems() {
-      return this.items.filter((item) => item.finished && item.visible);
+      return this.userState.todos.filter((item) => item.finished && item.visible);
     },
+    ...mapState(['userState'])
   },
   methods: {
-    addTodo() {
+    clickAddTodo() {
       this.addTodoCheck = !this.addTodoCheck;
       if (this.addTodoCheck) {
         setTimeout(() => {
@@ -75,12 +65,10 @@ export default {
       if (this.addTodoText === "") {
         return;
       }
-      this.items.push({
-        id: 0,
+      this.addTodo({
         content: new String(this.addTodoText),
-        timeText: "",
+        timeText: new Date().toLocaleDateString(),
         finished: false,
-        needAlarm: false,
         visible: true,
         index: 0,
         ctime: new Date().getTime(),
@@ -88,6 +76,7 @@ export default {
       });
       this.addTodoText = "";
     },
+    ...mapActions(['addTodo'])
   },
 };
 </script>
