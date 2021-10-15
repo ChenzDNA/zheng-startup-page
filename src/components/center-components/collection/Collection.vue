@@ -2,7 +2,7 @@
   <div id="collection">
     <div id="collections">
       <SingleCollection
-        v-for="(colle, index) in collections"
+        v-for="(colle, index) in userState.collections"
         :key="index"
         :colle="colle"
         :edit="edit"
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import SingleCollection from "./SingleCollection.vue";
 
 export default {
@@ -36,26 +37,6 @@ export default {
   components: { SingleCollection },
   data() {
     return {
-      collections: [
-        {
-          name: "github",
-          url: "https://github.com/",
-          color: "#939393",
-          visible: true,
-        },
-        {
-          name: "bilibili",
-          url: "https://www.bilibili.com/",
-          color: "rgb(100,160,210)",
-          visible: true,
-        },
-        {
-          name: "pixiv",
-          url: "https://www.pixiv.net/",
-          color: "rgb(100,170,150)",
-          visible: true,
-        },
-      ],
       edit: false,
       newColleName: "",
       newColleLink: "",
@@ -72,17 +53,23 @@ export default {
           .replace(/(\s|\u00A0)+$/, "") === ""
       ) {
         this.newColleName = this.newColleLink = this.newColleColor = "";
-        console.log("jiba");
         return;
       }
-      this.collections.push({
+      console.log(this.newColleColor.length);
+      console.log(this.newColleColor);
+      let data = {
         name: new String(this.newColleName),
         url: new String(this.newColleLink),
         color: new String(this.newColleColor),
         visible: true,
-      });
+      };
+      this.addCollection(data);
       this.newColleName = this.newColleLink = this.newColleColor = "";
     },
+    ...mapActions(["addCollection"]),
+  },
+  computed: {
+    ...mapState(["userState"]),
   },
 };
 </script>

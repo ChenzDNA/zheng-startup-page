@@ -5,7 +5,7 @@
         {{ colle.name.slice(0, 2).toUpperCase() }}
         <div
           class="collection-delete"
-          @click.prevent="deleteCollection"
+          @click.prevent="deleteCollection(colle)"
           v-show="edit"
         >
           x
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: "SingleCollection",
   props: {
@@ -27,9 +28,7 @@ export default {
     return {};
   },
   methods: {
-    deleteCollection() {
-      this.colle.visible = false;
-    },
+    ...mapActions(['deleteCollection'])
   },
 };
 </script>

@@ -39,7 +39,7 @@ export default {
   userLogout({ commit }) {
     request({
       url: '/user/logout',
-      method: 'post'
+      method: 'post',
     }).then(res => {
       if (res.code != 200) {
         alert('error');
@@ -52,13 +52,42 @@ export default {
     request({
       url: '/user/updateUserData',
       data,
-      method: 'post'
+      method: 'post',
     }).then(res => {
       if (res.code != 200) {
         alert(res.message)
         return
       }
       commit('updateUserState', res.data)
+    })
+  },
+  // 添加收藏
+  addCollection({ commit }, data) {
+    request({
+      url: '/collection/insert',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.message)
+        return
+      }
+      data.id = res.data.id
+      commit('addCollection', data)
+    })
+  },
+  // 删除收藏
+  deleteCollection({ commit }, data) {
+    request({
+      url: '/collection/delete',
+      data,
+      method: 'post',
+    }).then(res => {
+      if (res.code != 200) {
+        alert(res.message)
+        return
+      }
+      commit('deleteCollection', data)
     })
   },
 }
