@@ -80,9 +80,9 @@ export default {
       this.edit = !this.edit;
       if (this.edit) {
         this.content = this.content.replaceAll("<br/>", "\n");
-        this.content = this.content.replaceAll(" ", "&nbsp;");
-        this.content = this.content.replaceAll("<", "&lt;");
-        this.content = this.content.replaceAll(">", "&gt;");
+        this.content = this.content.replaceAll("&nbsp;", " ");
+        this.content = this.content.replaceAll("&lt;", "<");
+        this.content = this.content.replaceAll("&gt;", ">");
         setTimeout(() => {
           document.getElementById("edit-textarea").focus();
         }, 10);
@@ -93,9 +93,9 @@ export default {
           content: this.content,
         });
         this.content = this.content.replaceAll("\n", "<br/>");
-        this.content = this.content.replaceAll("&nbsp;", " ");
-        this.content = this.content.replaceAll("&lt;", "<");
-        this.content = this.content.replaceAll("&gt;", ">");
+        this.content = this.content.replaceAll(" ", "&nbsp;");
+        this.content = this.content.replaceAll("<", "&lt;");
+        this.content = this.content.replaceAll(">", "&gt;");
       }
     },
     createNewNote() {
