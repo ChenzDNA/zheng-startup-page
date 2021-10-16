@@ -1,6 +1,12 @@
 <template>
   <div id="main" :style="{ backgroundImage: `url(${imageUrl})` }">
     <Cat v-if="display && catConf.display"></Cat>
+    <div id="record" v-if="display">
+      ICP备案号:
+      <a href="https://beian.miit.gov.cn" target="_blank"
+        >湘ICP备2021015524号</a
+      >
+    </div>
     <Time class="background-void" v-if="display"></Time>
     <Weather class="background-void" v-show="display"></Weather>
     <Search class="background-void" v-if="display"></Search>
@@ -104,5 +110,12 @@ export default {
   padding: 5px;
   color: white;
   cursor: pointer;
+}
+#record {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 200px);
+  width: 400px;
+  color: white;
 }
 </style>
