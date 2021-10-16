@@ -88,14 +88,14 @@ export default {
         }, 10);
         return;
       } else {
-        this.updateNote({
-          id: this.userState.notes[this.contentIndex].id,
-          content: this.content,
-        });
         this.content = this.content.replaceAll("\n", "<br/>");
         this.content = this.content.replaceAll(" ", "&nbsp;");
         this.content = this.content.replaceAll("<", "&lt;");
         this.content = this.content.replaceAll(">", "&gt;");
+        this.updateNote({
+          id: this.userState.notes[this.contentIndex].id,
+          content: this.content,
+        });
       }
     },
     createNewNote() {
