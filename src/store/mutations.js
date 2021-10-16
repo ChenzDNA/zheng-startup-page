@@ -9,15 +9,15 @@ export default {
     state.catConf.display = data.userData.catDisplay === 2 ? true : false
     state.timeConf.second = data.userData.secondDisplay === 2 ? true : false
 
-    state.userState.collections = data.collection
+    state.userState.collections = data.collection === undefined || data.collection === null ? [] : data.collection
     for (let item of state.userState.collections) {
       item.visible = true
     }
-    state.userState.notes = data.note
+    state.userState.notes = data.note === undefined || data.note === null ? [] : data.note
     for (let item of state.userState.notes) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
     }
-    state.userState.todos = data.todo
+    state.userState.todos = data.todo === undefined || data.todo === null ? [] : data.todo
     for (let item of state.userState.todos) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
       item.visible = true
@@ -61,6 +61,7 @@ export default {
   },
   // 待办
   addTodo(state, data) {
+    data.finished = data.finished === 1 ? false : true
     state.userState.todos.push(data)
   },
   deleteTodo(state, data) {
@@ -77,6 +78,7 @@ export default {
       ind = index
       return value.id === data.id
     })
+    data.finished = data.finished === 1 ? false : true
     state.userState.todos.splice(ind, 1, data)
   },
 }

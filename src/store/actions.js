@@ -130,6 +130,7 @@ export default {
     })
   },
   addTodo({ commit }, data) {
+    data.finished = data.finished ? 2 : 1
     request({
       url: '/todo/insert',
       data,
@@ -139,6 +140,7 @@ export default {
         alert(res.message)
         return
       }
+      data.id = res.data.id
       commit('addTodo', data)
     })
   },

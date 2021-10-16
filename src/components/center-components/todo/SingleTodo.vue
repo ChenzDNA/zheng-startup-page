@@ -62,7 +62,7 @@ export default {
   padding-left: 10px;
 }
 .single-todo > div:nth-child(3) {
-  width: 80px;
+  width: 100px;
 }
 .done {
   text-decoration-line: line-through;
