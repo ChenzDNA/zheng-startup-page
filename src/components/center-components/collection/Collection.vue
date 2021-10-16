@@ -60,7 +60,9 @@ export default {
       let data = {
         name: new String(this.newColleName),
         url: new String(this.newColleLink),
-        color: new String(this.newColleColor),
+        color: new String(
+          this.newColleColor === "" ? "#ffffff" : this.newColleColor
+        ),
         visible: true,
       };
       this.addCollection(data);
