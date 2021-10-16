@@ -125,7 +125,7 @@ export default {
       method: 'post',
     }).then(res => {
       if (res.code != 200) {
-        alert(res.data)
+        alert(res.message)
         return
       }
       commit('updateNote', data)
