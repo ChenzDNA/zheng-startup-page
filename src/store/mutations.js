@@ -16,10 +16,13 @@ export default {
     state.userState.notes = data.note === undefined || data.note === null ? [] : data.note
     for (let item of state.userState.notes) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
-      this.content = this.content.replaceAll("\n", "<br/>");
-      this.content = this.content.replaceAll(" ", "&nbsp;");
-      this.content = this.content.replaceAll("<", "&lt;");
-      this.content = this.content.replaceAll(">", "&gt;");
+      if (item.content === null || item.content === undefined) {
+        continue
+      }
+      item.content = item.content.replaceAll("\n", "<br/>");
+      item.content = item.content.replaceAll(" ", "&nbsp;");
+      item.content = item.content.replaceAll("<", "&lt;");
+      item.content = item.content.replaceAll(">", "&gt;");
     }
     state.userState.todos = data.todo === undefined || data.todo === null ? [] : data.todo
     for (let item of state.userState.todos) {
