@@ -24,7 +24,7 @@
       </div>
       <div id="note-control">
         <div @click="clickNewNote">新建</div>
-        <div @click="deleteNote">删除</div>
+        <div @click="clickDeleteNote">删除</div>
       </div>
     </div>
     <div id="note-content" class="beautify-scrollbar" :index="contentIndex">
@@ -86,21 +86,21 @@ export default {
         setTimeout(() => {
           document.getElementById("edit-textarea").focus();
         }, 10);
+        return;
       } else {
+        this.updateNote({
+          id: this.userState.notes[this.contentIndex].id,
+          content: this.content,
+        });
         this.content = this.content.replaceAll("\n", "<br/>");
         this.content = this.content.replaceAll("&nbsp;", " ");
         this.content = this.content.replaceAll("&lt;", "<");
         this.content = this.content.replaceAll("&gt;", ">");
       }
-      this.updateNote({
-        id: this.userState.notes[this.contentIndex].id,
-        content: this.content,
-      });
     },
     createNewNote() {
       this.newNote = false;
       if (this.newTitle === "") return;
-      console.log(this.newTitle);
       this.addNote({
         id: 0,
         title: new String(this.newTitle),
@@ -110,7 +110,7 @@ export default {
       });
       this.newTitle = "";
     },
-    deleteNote() {
+    clickDeleteNote() {
       this.deleteNote(this.userState.notes[this.contentIndex]);
       this.title = "";
       this.content = "";

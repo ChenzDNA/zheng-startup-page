@@ -16,6 +16,10 @@ export default {
     state.userState.notes = data.note === undefined || data.note === null ? [] : data.note
     for (let item of state.userState.notes) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
+      item.content = item.content.replaceAll("\n", "<br/>");
+      item.content = item.content.replaceAll("&nbsp;", " ");
+      item.content = item.content.replaceAll("&lt;", "<");
+      item.content = item.content.replaceAll("&gt;", ">");
     }
     state.userState.todos = data.todo === undefined || data.todo === null ? [] : data.todo
     for (let item of state.userState.todos) {
@@ -40,6 +44,7 @@ export default {
     })
     state.userState.collections.splice(ind, 1)
   },
+  // 便签
   addNote(state, data) {
     state.userState.notes.push(data)
   },
@@ -52,12 +57,11 @@ export default {
     state.userState.notes.splice(ind, 1)
   },
   updateNote(state, data) {
-    let ind
     state.userState.notes.find((value, index) => {
-      ind = index
+      if (state.userState.notes[index].id === data.id)
+        state.userState.notes[index].content = data.content
       return value.id === data.id
     })
-    state.userState.notes.splice(ind, 1, data)
   },
   // 待办
   addTodo(state, data) {

@@ -90,6 +90,7 @@ export default {
       commit('deleteCollection', data)
     })
   },
+  // 便签
   addNote({ commit }, data) {
     request({
       url: '/note/insert',
@@ -100,6 +101,7 @@ export default {
         alert(res.message)
         return
       }
+      data.id = res.data.id
       commit('addNote', data)
     })
   },
@@ -129,6 +131,7 @@ export default {
       commit('updateNote', data)
     })
   },
+  // 待办
   addTodo({ commit }, data) {
     data.finished = data.finished ? 2 : 1
     request({
