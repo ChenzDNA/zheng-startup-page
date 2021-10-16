@@ -55,8 +55,6 @@ export default {
         this.newColleName = this.newColleLink = this.newColleColor = "";
         return;
       }
-      console.log(this.newColleColor.length);
-      console.log(this.newColleColor);
       let data = {
         name: new String(this.newColleName),
         url: new String(this.newColleLink),
