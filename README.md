@@ -9,6 +9,15 @@
 <li> 收藏、便签、待办都可以自定义。
 <li> 目前没写后台。
 <li> PC浏览器左下角的猫是 <a href="https://github.com/zhanyuzhang/lovely-cat">lovely-cat</a>
+<li> 后端 <a href="https://github.com/ChenzDNA/ZhengStartupPage">ZhengStartupPage</a>
+
+
+## 使用
+
+<li> vue
+<li> vuex
+<li> vue-router
+<li> axios
 
 ## Project setup
 ```
