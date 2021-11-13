@@ -22,6 +22,13 @@
     <div>
       <button @click="userLogout">退出登录</button>
     </div>
+    <div class="contact-me">
+      <div>contact me:</div>
+      <a href="https://github.com/ChenzDNA" class="contact-me-github">GitHub</a>
+      <a href="https://space.bilibili.com/37864003" class="contact-me-bilibili"
+        >BiliBili</a
+      >
+    </div>
   </div>
 </template>
 
@@ -95,5 +102,22 @@ export default {
 }
 input {
   outline: none;
+}
+.contact-me {
+  position: absolute;
+  bottom: 30px;
+}
+.contact-me > a {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  border-radius: 4px;
+}
+.contact-me > a:nth-child(2){
+  background: #424242;
+}
+.contact-me > a:nth-child(3){
+  background: #00b5e5;
 }
 </style>

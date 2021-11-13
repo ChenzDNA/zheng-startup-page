@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   userState: {
     id: '',
     isLogin: false,
@@ -65,4 +65,4 @@ export default {
   catConf: {
     display: false,
   },
-}
+})
