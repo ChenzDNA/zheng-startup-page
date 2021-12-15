@@ -9,11 +9,11 @@ export default {
     state.catConf.display = data.userData.catDisplay === 2 ? true : false
     state.timeConf.second = data.userData.secondDisplay === 2 ? true : false
 
-    state.userState.collections = data.collection === undefined || data.collection === null ? [] : data.collection
+    state.userState.collections = data.userData.collections === undefined || data.userData.collections === null ? [] : data.userData.collections
     for (let item of state.userState.collections) {
       item.visible = true
     }
-    state.userState.notes = data.note === undefined || data.note === null ? [] : data.note
+    state.userState.notes = data.userData.notes === undefined || data.userData.notes === null ? [] : data.userData.notes
     for (let item of state.userState.notes) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
       if (item.content === null || item.content === undefined) {
@@ -24,7 +24,7 @@ export default {
       item.content = item.content.replaceAll("<", "&lt;");
       item.content = item.content.replaceAll(">", "&gt;");
     }
-    state.userState.todos = data.todo === undefined || data.todo === null ? [] : data.todo
+    state.userState.todos = data.userData.todos === undefined || data.userData.todos === null ? [] : data.userData.todos
     for (let item of state.userState.todos) {
       item.timeText = new Date(item.ctime).toLocaleDateString()
       item.visible = true
