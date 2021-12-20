@@ -5,7 +5,10 @@
       v-text="`${data.finished ? '☑' : '☐'}`"
       :class="`${data.finished ? 'todo-back' : 'todo-finish'}`"
     ></div>
-    <div v-html="data.content" :class="`${data.finished ? 'done' : ''}`"></div>
+    <div
+      v-html="data.content"
+      :class="`${data.finished === 2 ? 'done' : ''}`"
+    ></div>
     <div v-html="data.timeText"></div>
     <div class="delete-todo" @click="clickDeleteTodo">删除</div>
   </div>
