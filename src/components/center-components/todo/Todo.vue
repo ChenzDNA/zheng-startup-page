@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
 import SingleTodo from "./SingleTodo.vue";
 
 export default {
@@ -44,12 +44,16 @@ export default {
   },
   computed: {
     todoItems() {
-      return this.userState.todos.filter((item) => !item.finished && item.visible);
+      return this.userState.todos.filter(
+        (item) => item.finished === 1 && item.visible
+      );
     },
     finishedItems() {
-      return this.userState.todos.filter((item) => item.finished && item.visible);
+      return this.userState.todos.filter(
+        (item) => item.finished === 2 && item.visible
+      );
     },
-    ...mapState(['userState'])
+    ...mapState(["userState"]),
   },
   methods: {
     clickAddTodo() {
@@ -76,7 +80,7 @@ export default {
       });
       this.addTodoText = "";
     },
-    ...mapActions(['addTodo'])
+    ...mapActions(["addTodo"]),
   },
 };
 </script>

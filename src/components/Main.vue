@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       display: true,
-      imageUrl: "https://api.dujin.org/bing/1920.php",
+      imageUrl: "https://api.kdcc.cn/img/",
       sidebarConf: {
         realRight: "-300px",
       },
